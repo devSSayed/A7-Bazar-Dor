@@ -27,7 +27,7 @@ const NavbarMarquee = async () => {
 
     return (
         <div>
-            <Marquee direction="left" speed={150} className='bg-[#F3FBF4] border-b border-[#D9D9D9]'>
+            <Marquee direction="left" speed={150} className='bg-[#FAFCFA] border-b border-[#F0F5F0]'>
 
 
                 {

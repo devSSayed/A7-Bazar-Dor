@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col w-full max-w-full overflow-x-hidden">
 
         <Header />
-      <main className="flex-1 w-full max-w-full overflow-x-hidden container mx-auto">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {children}
       </main>
         
