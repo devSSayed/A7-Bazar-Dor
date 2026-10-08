@@ -18,8 +18,6 @@ const MoneyRaisedCards = async () => {
 
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { next: { revalidate: 7200 } });
     const data = await res.json()
-    console.log(data);
-
 
     const raisedMoneyCards = data.filter((product: iCardsProps) => product.change.dir === 'up');
 
@@ -34,7 +32,7 @@ const MoneyRaisedCards = async () => {
                 {
                     CardsPctHighToLow.slice(0, 6).map((product: iCardsProps) => {
                         return (
-                            <div key={product.id} className='px-3 py-2 border-2 bg-[#FAFCFA] border-[#F0F5F0] rounded-2xl'>
+                            <div key={product.id} className='px-3 py-2 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer'>
 
                                 <div>
                                     {/* image & product name & unit */}
