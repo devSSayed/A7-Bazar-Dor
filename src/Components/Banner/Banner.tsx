@@ -1,6 +1,7 @@
 import BannerImgae from '@/assetes/bazar-hero 1.png';
 import BannerDate from '@/Components/Banner/BannerDate';
 import Image from 'next/image';
+import BannerButton from './BannerButton';
 
 
 const Banner = () => {
@@ -16,7 +17,7 @@ const Banner = () => {
                         <h2 className='font-bold text-4xl text-center md:text-start md:text-5xl'>আজকের বাজারের <br className="md:hidden" /> দাম এক নজরে</h2>
                     </div>
                     <p className="text-[#1D271F] text-center md:text-start text-[14px] md:text-[17px]">চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, <br className='hidden xl:block' /> সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
-                    <button className='btn md:w-fit rounded-[10px] md:py-6 md:px-8 md:text-[17px] bg-[#05893E] active:bg-[#047F39] border border-[#047F39] text-[#F3FBF4] shadow-[0_5px_7px_-1px_rgba(0,138,61,0.9)]'>সব পণ্য দেখুন</button>
+                    <BannerButton />
                 </div>
                 <Image src={BannerImgae} alt="banner" width={380} height={380} />
             </div>

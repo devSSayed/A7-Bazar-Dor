@@ -23,33 +23,33 @@ const AllProductsCards = async () => {
     const Products = data;
 
     return (
-        <div className=' my-12 container mx-auto'>
+        <div className=' my-12 container mx-auto space-y-5'>
 
-            <div className='flex flex-col gap-1.5 ml-4'>
-                <h3 className='text-[#1D271F] text-[18px] md:text-2xl font-bold'>সব পণ্য</h3>
-                <p className='text-[#1D271F] text-[13px] md:text-[16px]'>মোট {toBengaliNumber(Products.length)}টি পণ্য দেখানো হচ্ছে</p>
+            <div className='flex flex-col items-center md:items-start gap-1 md:gap-1.5'>
+                <h3 className='text-[#1D271F] text-[19px] md:text-2xl font-bold'>সব পণ্য</h3>
+                <p className='text-[#1D271F] text-[14px] md:text-[16px]'>মোট {toBengaliNumber(Products.length)}টি পণ্য দেখানো হচ্ছে</p>
             </div>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 px-2 md:px-3 py-2 md:py-3'>
+            <div id='#সব-পণ্য' className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-2 md:px-0 py-2 md:py-0'>
                 {
                     Products.map((product: iCardsProps) => {
                         return (
-                            <div key={product.id} className='px-3 py-2 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer'>
+                            <div key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
 
-                                <div>
+                                <div className='flex flex-col justify-between gap-3.5'>
                                     {/* image & product name & unit */}
                                     <div className='flex items-center gap-2 md:gap-3'>
                                         <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0'>{product.image}</span>
                                         <div className='flex flex-col gap-0.5'>
-                                            <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>{product.nameBn}</span>
-                                            <span className='text-[#1D271F] text-[14px] md:text-[16px] font-noto font-semibold'>প্রতি {toBengaliUnit(product.unit)}</span>
+                                            <h4 className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</h4>
+                                            <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
                                         </div>
                                     </div>
 
 
 
-                                    <div className='flex items-center justify-between mt-2 md:mt-3'>
+                                    <div className='flex items-end justify-between mt-2 md:mt-3'>
                                         {/* price */}
                                         <div>
                                             <p className='text-[#1D271F] text-[14px] font-medium'>আজকের দাম</p>
