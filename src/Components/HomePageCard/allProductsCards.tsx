@@ -25,13 +25,13 @@ const AllProductsCards = async () => {
     return (
         <div className=' my-12 container mx-auto space-y-5'>
 
-            <div className='flex flex-col items-center md:items-start gap-1 md:gap-1.5'>
+            <div className='flex flex-col items-center xl:items-start gap-1 md:gap-1.5'>
                 <h3 className='text-[#1D271F] text-[19px] md:text-2xl font-bold'>সব পণ্য</h3>
                 <p className='text-[#1D271F] text-[14px] md:text-[16px]'>মোট {toBengaliNumber(Products.length)}টি পণ্য দেখানো হচ্ছে</p>
             </div>
 
 
-            <div id='#সব-পণ্য' className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-2 md:px-0 py-2 md:py-0'>
+            <div id='সব-পণ্য' className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6 px-3.5 xl:px-0 py-2 md:py-0'>
                 {
                     Products.map((product: iCardsProps) => {
                         return (

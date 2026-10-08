@@ -3,6 +3,7 @@ import type { Viewport } from 'next';
 import { Hind_Siliguri, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "@/Components/all-time-using/Nabar/Header";
+import Footer from "@/Components/all-time-using/Footer/Footer";
 
 const HindSiliguri = Hind_Siliguri({
   weight: ['300', '400', '500', '600', '700'],
@@ -43,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
       </main>
         
-
+      <Footer />
       </body>
     </html>
   );

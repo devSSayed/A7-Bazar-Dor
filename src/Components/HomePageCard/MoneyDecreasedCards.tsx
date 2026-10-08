@@ -28,12 +28,12 @@ const MoneyDecreasedCards = async () => {
 
     return (
         <div className=' my-12 container mx-auto space-y-5'>
-            <span className='flex items-center justify-center md:justify-start md:items-start'>
+            <span className='flex items-center justify-center xl:justify-start xl:items-start'>
                 <h3 className='flex items-center gap-2 text-[#1D271F] text-[19px] md:text-2xl font-bold'><IoCaretDownSharp className='text-[#1A9951]' /> আজ দাম কমেছে</h3>
             </span>
             
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-2 md:px-0 py-2 md:py-0'>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6 px-3.5 xl:px-0 py-2 md:py-0'>
                 {
                     CardsPctHighToLow.slice(0, 6).map((product: iCardsProps) => {
                         return (
