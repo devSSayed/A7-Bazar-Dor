@@ -9,7 +9,7 @@ const Navbar = () => {
   
 
     return (
-        <nav className="bg-[#FAFCFA] border-b border-[#E1E8E1] w-full z-50">
+        <nav className="bg-[#FAFCFA] border-b border-[#E1E8E1] w-full">
             <div className="w-full container mx-auto flex justify-between items-center p-4">
                 <Link href="/" className="flex items-center gap-2">
                     <Image src={CartImage} alt="logo" width={50} height={50} className="w-10 h-10 md:w-12.5 md:h-12.5"/>

@@ -11,7 +11,7 @@ const NavbarCategories = async () => {
     const data = await res.json()
 
     return (
-        <div className="border-b border-[#E1E8E1] bg-[#FAFCFA] shadow-xl/2 py-2 md:py-3 overflow-x-auto scrollbar-hide z-50">
+        <div className="border-b border-[#E1E8E1] bg-[#FAFCFA] shadow-xl/2 py-2 md:py-3 overflow-x-auto scrollbar-hide">
             <div className="container mx-auto grid grid-cols-4 place-items-center md:flex gap-1 md:gap-2 md:pl-4.25">
                 {
                     data.map((category: iNavbarCategoriesProps) => {
