@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Viewport } from 'next';
-import { Hind_Siliguri, Noto_Sans_Bengali } from "next/font/google";
+import { Hind_Siliguri, Noto_Sans_Bengali, Noto_Color_Emoji, } from "next/font/google";
 import "./globals.css";
 import Header from "@/Components/all-time-using/Nabar/Header";
 import Footer from "@/Components/all-time-using/Footer/Footer";
@@ -15,6 +15,12 @@ const NotoSansBengali = Noto_Sans_Bengali({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
   variable: "--font-noto-sans-bengali",
   subsets: ["latin", "bengali"],
+});
+
+const NotoColorEmoji = Noto_Color_Emoji({
+  weight: "400",
+  subsets: ["emoji"],
+  variable: "--font-noto-color-emoji",
 });
 
 export const viewport: Viewport = {
@@ -35,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="light"
-      className={`${HindSiliguri.variable} ${NotoSansBengali.variable} h-full antialiased`}
+      className={`${HindSiliguri.variable} ${NotoSansBengali.variable} ${NotoColorEmoji.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col w-full max-w-full overflow-x-hidden">
 

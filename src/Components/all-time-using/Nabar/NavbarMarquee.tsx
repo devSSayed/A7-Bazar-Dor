@@ -36,7 +36,7 @@ const NavbarMarquee = async () => {
                         return (
                             <div key={product.id} className='flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1 md:py-2 border-r border-[#D9D9D9]'>
                                 {/* image */}
-                                <span className='text-[15px] md:text-xl rounded-2xl'>{product.image}</span>
+                                <span className='text-[15px] md:text-xl rounded-2xl emoji-icon'>{product.image}</span>
                                 {/* product name */}
                                 <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>{product.nameBn}</span>
                                 {/* price and unit */}

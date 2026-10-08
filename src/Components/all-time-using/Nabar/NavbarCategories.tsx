@@ -18,7 +18,7 @@ const NavbarCategories = async () => {
                         return <div key={category.id} >
                             <button className='flex items-center gap-0.5 text-[#1D271F] text-[15px] md:text-[16px] font-semibold md:btn 
                             border-none bg-[#FAFCFA] hover:bg-gray-200 active:bg-gray-300 rounded-[10px] py-2 px-1.5 md:py-3 md:px-3'>
-                                <span>{category.icon}</span>
+                                <span className="emoji-icon">{category.icon}</span>
                                 <span>{category.nameBn} </span>
                             </button>
 

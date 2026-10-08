@@ -1,9 +1,19 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+
+.emoji-icon {
+  font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+}
+
 @theme {
   --font-hind: var(--font-hind-siliguri);
   --font-noto: var(--font-noto-sans-bengali);
+}
+
+.emoji-icon {
+  font-family: var(--font-noto-color-emoji);
 }
 
 body {

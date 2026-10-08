@@ -40,7 +40,7 @@ const MoneyRaisedCards = async () => {
                                 <div className='flex flex-col justify-between gap-3.5'>
                                     {/* image & product name & unit */}
                                     <div className='flex items-center gap-2 md:gap-3'>
-                                        <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0'>{product.image}</span>
+                                        <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 emoji-icon'>{product.image}</span>
                                         <div className='flex flex-col gap-0.5'>
                                             <span className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</span>
                                             <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
