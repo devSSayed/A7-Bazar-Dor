@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { toBengaliNumber, toBengaliUnit } from '../utils';
 import { IoCaretDownSharp } from 'react-icons/io5';
 
@@ -37,7 +38,7 @@ const MoneyDecreasedCards = async () => {
                 {
                     CardsPctHighToLow.slice(0, 6).map((product: iCardsProps) => {
                         return (
-                            <div key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
+                            <Link href={`/Products/${product.id}`} key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
 
                                 <div className='flex flex-col justify-between gap-3.5'>
                                     {/* image & product name & unit */}
@@ -69,7 +70,7 @@ const MoneyDecreasedCards = async () => {
                                 </div>
 
 
-                            </div>
+                            </Link>
                         )
                     })
                 }

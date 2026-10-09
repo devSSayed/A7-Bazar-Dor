@@ -6,6 +6,7 @@ import { iProductsType } from "../Types/ProductsTypes";
 import { IoCaretDownSharp, IoCaretUpSharp } from "react-icons/io5";
 import { AiOutlineMinus } from "react-icons/ai";
 import { toBengaliNumber, toBengaliUnit } from "../utils";
+import Link from "next/link";
 
 const CategoryCards = ({ Products }: { Products: iProductsType[] }) => {
 
@@ -24,7 +25,7 @@ const CategoryCards = ({ Products }: { Products: iProductsType[] }) => {
             {
                 sortedCategories.map((product: iProductsType) => {
                     return (
-                        <div key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
+                        <Link href={`/Products/${product.id}`} key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
 
                             <div className='flex flex-col justify-between gap-3.5'>
                                 {/* image & product name & unit */}
@@ -56,7 +57,7 @@ const CategoryCards = ({ Products }: { Products: iProductsType[] }) => {
                             </div>
 
 
-                        </div>
+                        </Link>
                     )
                 })
             }

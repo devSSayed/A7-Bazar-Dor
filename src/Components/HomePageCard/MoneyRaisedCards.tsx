@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { toBengaliNumber, toBengaliUnit } from '../utils';
 import { IoCaretUpSharp } from 'react-icons/io5';
 
@@ -35,39 +36,39 @@ const MoneyRaisedCards = async () => {
                 {
                     CardsPctHighToLow.slice(0, 6).map((product: iCardsProps) => {
                         return (
-                            <div key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
+                                <Link href={`/Products/${product.id}`} key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
 
-                                <div className='flex flex-col justify-between gap-3.5'>
-                                    {/* image & product name & unit */}
-                                    <div className='flex items-center gap-2 md:gap-3'>
-                                        <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 emoji-icon'>{product.image}</span>
-                                        <div className='flex flex-col gap-0.5'>
-                                            <span className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</span>
-                                            <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
+                                    <div className='flex flex-col justify-between gap-3.5'>
+                                        {/* image & product name & unit */}
+                                        <div className='flex items-center gap-2 md:gap-3'>
+                                            <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 emoji-icon'>{product.image}</span>
+                                            <div className='flex flex-col gap-0.5'>
+                                                <span className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</span>
+                                                <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
+                                            </div>
                                         </div>
+
+
+
+                                        <div className='flex items-end justify-between mt-2 md:mt-3'>
+                                            {/* price */}
+                                            <div>
+                                                <p className='text-[#1D271F] text-[14px] font-medium'>আজকের দাম</p>
+                                                <p className='text-[#1D271F] text-[20px] font-noto font-bold'>{toBengaliNumber(product.today)} <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>টাকা</span></p>
+                                            </div>
+                                            {/* how much raised  */}
+                                            <span className={`flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl bg-red-500/10 font-medium text-[#D03739]`}>
+                                                <IoCaretUpSharp />
+                                                <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
+                                            </span>
+                                        </div>
+
+
+
                                     </div>
 
 
-
-                                    <div className='flex items-end justify-between mt-2 md:mt-3'>
-                                        {/* price */}
-                                        <div>
-                                            <p className='text-[#1D271F] text-[14px] font-medium'>আজকের দাম</p>
-                                            <p className='text-[#1D271F] text-[20px] font-noto font-bold'>{toBengaliNumber(product.today)} <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>টাকা</span></p>
-                                        </div>
-                                        {/* how much raised  */}
-                                        <span className={`flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl bg-red-500/10 font-medium text-[#D03739]`}>
-                                            <IoCaretUpSharp />
-                                            <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
-                                        </span>
-                                    </div>
-
-
-
-                                </div>
-
-
-                            </div>
+                                </Link>
                         )
                     })
                 }

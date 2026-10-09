@@ -1,6 +1,5 @@
 'use client';
 
-import { iProductsType } from '@/Components/Types/ProductsTypes';
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 
 interface iProviderProps {

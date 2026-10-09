@@ -1,33 +1,19 @@
 import CategoryCards from '@/Components/CategoryPageCompo/CategoryCards';
 import SortingBox from '@/Components/CategoryPageCompo/SortingBox';
+import { iProductsType } from '@/Components/Types/ProductsTypes';
 import { toBengaliNumber } from '@/Components/utils';
 import Link from 'next/link';
 import React from 'react';
 
 
-
-interface iCardsProps {
-    id: number;
-    nameBn: string;
-    categoryNameBn: string;
-    unit: string;
-    image: string;
-    categoryIcon: string;
-    today: number;
-    change: {
-        dir: 'up' | 'down' | 'flat';
-        pct: number;
-    }
-}
-
 const CategoryDetailsPage = async ({ params }: { params: { CategoryID: string } }) => {
     const { CategoryID } = await params
-    console.log(CategoryID);
+
 
     const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${CategoryID}`, { cache: 'no-store' });
     const data = await res.json()
 
-    const Products:iCardsProps[] = data;
+    const Products:iProductsType[] = data;
     const categoryInfo = data?.[0];
 
 

@@ -6,8 +6,17 @@ export interface iProductsType {
     image: string;
     categoryIcon: string;
     today: number;
+     yesterday: number,
+    lastWeek: number,
+    lastMonth: number,
     change: {
         dir: 'up' | 'down' | 'flat';
         pct: number;
     }
+    markets: [{
+        market: string,
+        division: string,
+        min: number,
+        max: number
+    }]
 }
