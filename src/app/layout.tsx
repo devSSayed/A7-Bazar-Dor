@@ -4,6 +4,7 @@ import { Hind_Siliguri, Noto_Sans_Bengali, Noto_Color_Emoji, } from "next/font/g
 import "./globals.css";
 import Header from "@/Components/all-time-using/Nabar/Header";
 import Footer from "@/Components/all-time-using/Footer/Footer";
+import CategoryContextProvider from "@/CategoryContext/CategoryContext";
 
 const HindSiliguri = Hind_Siliguri({
   weight: ['300', '400', '500', '600', '700'],
@@ -45,12 +46,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col w-full max-w-full overflow-x-hidden">
 
-        <Header />
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
-        {children}
-      </main>
-        
-      <Footer />
+        <CategoryContextProvider>
+
+          <Header />
+          
+          <main className="flex-1 w-full max-w-full overflow-x-hidden">
+            {children}
+          </main>
+
+          <Footer />
+
+        </CategoryContextProvider>
       </body>
     </html>
   );

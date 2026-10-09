@@ -2,9 +2,7 @@ import { AiOutlineMinus } from 'react-icons/ai';
 import { toBengaliNumber, toBengaliUnit } from '../utils';
 import { IoCaretDownSharp, IoCaretUpSharp } from 'react-icons/io5';
 
-const AllProductsCards = async () => {
-
-    interface iCardsProps {
+ interface iCardsProps {
         id: number;
         nameBn: string;
         unit: string;
@@ -15,6 +13,8 @@ const AllProductsCards = async () => {
             pct: number;
         }
     }
+
+const AllProductsCards = async () => { 
 
 
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { next: { revalidate: 7200 } });
@@ -56,7 +56,7 @@ const AllProductsCards = async () => {
                                             <p className='text-[#1D271F] text-[20px] font-noto font-bold'>{toBengaliNumber(product.today)} <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>টাকা</span></p>
                                         </div>
                                         {/* how much raised  */}
-                                        <span className={`${product.change.dir === 'up' ? 'bg-green-500/10 text-[#1A9951]' : product.change.dir === 'down' ? 'bg-red-500/10 text-[#DC2626]' : 'bg-[#F0F5F0] text-[#1D271F]'} flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl font-medium`}>
+                                        <span className={`${product.change.dir === 'up' ? 'bg-red-500/10 text-[#DC2626]' : product.change.dir === 'down' ? 'bg-green-500/10 text-[#1A9951]' : 'bg-[#F0F5F0] text-[#1D271F]'} flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl font-medium`}>
                                             {product.change.dir === 'up' ? <IoCaretUpSharp /> : product.change.dir === 'down' ? <IoCaretDownSharp /> : <span className='font-noto text-[#1D271F] font-bold flex gap-0.5 items-center'><AiOutlineMinus  className='text-[14px] text-2xl md:text-2xl font-black' /> ০.</span>}
                                             <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
                                         </span>
