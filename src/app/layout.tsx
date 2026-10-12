@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/Components/all-time-using/Nabar/Header";
 import Footer from "@/Components/all-time-using/Footer/Footer";
 import CategoryContextProvider from "@/CategoryContext/CategoryContext";
+import { Toaster } from 'react-hot-toast';
 
 const HindSiliguri = Hind_Siliguri({
   weight: ['300', '400', '500', '600', '700'],
@@ -53,7 +54,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1 w-full max-w-full overflow-x-hidden">
             {children}
           </main>
-
+          <Toaster position="top-center" reverseOrder={false} />
+          
           <Footer />
 
         </CategoryContextProvider>
