@@ -13,7 +13,7 @@ const BannerDate = () => {
     );
 
     return (
-        <p className='text-[#05893E] bg-[#05893E]/10 text-[14px] text-center w-fit px-5 py-2 md:py-3 rounded-4xl md:text-[17px] font-medium'>{date}</p>
+        <p className='text-[#05893E] bg-[#05893E]/10 text-[14px] font-noto text-center w-fit px-5 py-2 md:py-3 rounded-4xl md:text-[17px] font-medium'>{date}</p>
     );
 };
 

@@ -18,6 +18,27 @@ const MoneyRaisedCards = async () => {
 
 
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { next: { revalidate: 7200 } });
+    if (!res.ok) {
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+            <h1
+                className="text-7xl sm:text-8xl font-black tracking-tight"
+                style={{ color: '#D03739' }}
+            >
+                খালি
+            </h1>
+
+            <h2
+                className="mt-4 text-xl sm:text-2xl font-semibold"
+                style={{ color: '#1D271F' }}
+            >
+                এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি
+            </h2>
+
+            <p className="mt-2 text-sm sm:text-base text-gray-600 max-w-md">
+                এই মূহুর্তে এই ক্যাটাগরিতে কোনো পণ্য এভেলেবল নেই। অনুগ্রহ করে অন্য কোনো ক্যাটাগরি চেক করুন।
+            </p>
+        </div>
+    }
     const data = await res.json()
 
     const raisedMoneyCards = data.filter((product: iCardsProps) => product.change.dir === 'up');
@@ -36,39 +57,39 @@ const MoneyRaisedCards = async () => {
                 {
                     CardsPctHighToLow.slice(0, 6).map((product: iCardsProps) => {
                         return (
-                                <Link href={`/Products/${product.id}`} key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
+                            <Link href={`/Products/${product.id}`} key={product.id} className='px-3 py-5 border-2 bg-[#FAFCFA] border-[#E1E8E1] rounded-2xl cursor-pointer  active:border-[#05893E]/60 transition-all will-change-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-lg'>
 
-                                    <div className='flex flex-col justify-between gap-3.5'>
-                                        {/* image & product name & unit */}
-                                        <div className='flex items-center gap-2 md:gap-3'>
-                                            <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 emoji-icon'>{product.image}</span>
-                                            <div className='flex flex-col gap-0.5'>
-                                                <span className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</span>
-                                                <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
-                                            </div>
+                                <div className='flex flex-col justify-between gap-3.5'>
+                                    {/* image & product name & unit */}
+                                    <div className='flex items-center gap-2 md:gap-3'>
+                                        <span className='text-[28px] md:text-xl bg-[#F0F5F0] rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 emoji-icon'>{product.image}</span>
+                                        <div className='flex flex-col gap-0.5'>
+                                            <span className='text-[#1D271F] text-[16px] md:text-[18px] font-bold md:font-semibold'>{product.nameBn}</span>
+                                            <span className='text-[#1D271F] text-[13px] md:text-[14px] font-noto font-medium'>প্রতি {toBengaliUnit(product.unit)}</span>
                                         </div>
-
-
-
-                                        <div className='flex items-end justify-between mt-2 md:mt-3'>
-                                            {/* price */}
-                                            <div>
-                                                <p className='text-[#1D271F] text-[14px] font-medium'>আজকের দাম</p>
-                                                <p className='text-[#1D271F] text-[20px] font-noto font-bold'>{toBengaliNumber(product.today)} <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>টাকা</span></p>
-                                            </div>
-                                            {/* how much raised  */}
-                                            <span className={`flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl bg-red-500/10 font-medium text-[#D03739]`}>
-                                                <IoCaretUpSharp />
-                                                <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
-                                            </span>
-                                        </div>
-
-
-
                                     </div>
 
 
-                                </Link>
+
+                                    <div className='flex items-end justify-between mt-2 md:mt-3'>
+                                        {/* price */}
+                                        <div>
+                                            <p className='text-[#1D271F] text-[14px] font-medium'>আজকের দাম</p>
+                                            <p className='text-[#1D271F] text-[20px] font-noto font-bold'>{toBengaliNumber(product.today)} <span className='text-[#1D271F] text-[14px] md:text-[16px] font-semibold'>টাকা</span></p>
+                                        </div>
+                                        {/* how much raised  */}
+                                        <span className={`flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl bg-red-500/10 font-medium text-[#D03739]`}>
+                                            <IoCaretUpSharp />
+                                            <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
+                                        </span>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </Link>
                         )
                     })
                 }

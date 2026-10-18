@@ -3,23 +3,44 @@ import { toBengaliNumber, toBengaliUnit } from '../utils';
 import { IoCaretDownSharp, IoCaretUpSharp } from 'react-icons/io5';
 import Link from 'next/link';
 
- interface iCardsProps {
-        id: number;
-        slug: string;
-        nameBn: string;
-        unit: string;
-        image: string;
-        today: number;
-        change: {
-            dir: 'up' | 'down' | 'flat';
-            pct: number;
-        }
+interface iCardsProps {
+    id: number;
+    slug: string;
+    nameBn: string;
+    unit: string;
+    image: string;
+    today: number;
+    change: {
+        dir: 'up' | 'down' | 'flat';
+        pct: number;
     }
+}
 
-const AllProductsCards = async () => { 
+const AllProductsCards = async () => {
 
 
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { next: { revalidate: 7200 } });
+    if (!res.ok) {
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+            <h1
+                className="text-7xl sm:text-8xl font-black tracking-tight"
+                style={{ color: '#D03739' }}
+            >
+                খালি
+            </h1>
+
+            <h2
+                className="mt-4 text-xl sm:text-2xl font-semibold"
+                style={{ color: '#1D271F' }}
+            >
+                এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি
+            </h2>
+
+            <p className="mt-2 text-sm sm:text-base text-gray-600 max-w-md">
+                এই মূহুর্তে এই ক্যাটাগরিতে কোনো পণ্য এভেলেবল নেই। অনুগ্রহ করে অন্য কোনো ক্যাটাগরি চেক করুন।
+            </p>
+        </div>
+    }
     const data = await res.json()
 
     const Products = data;
@@ -29,7 +50,7 @@ const AllProductsCards = async () => {
 
             <div className='flex flex-col items-center xl:items-start gap-1 md:gap-1.5'>
                 <h3 className='text-[#1D271F] text-[19px] md:text-2xl font-bold'>সব পণ্য</h3>
-                <p className='text-[#1D271F] text-[14px] md:text-[16px]'>মোট {toBengaliNumber(Products.length)}টি পণ্য দেখানো হচ্ছে</p>
+                <p className='text-[#1D271F] text-[14px] md:text-[16px]'>মোট {toBengaliNumber(Products?.length)}টি পণ্য দেখানো হচ্ছে</p>
             </div>
 
 
@@ -59,7 +80,7 @@ const AllProductsCards = async () => {
                                         </div>
                                         {/* how much raised  */}
                                         <span className={`${product.change.dir === 'up' ? 'bg-red-500/10 text-[#DC2626]' : product.change.dir === 'down' ? 'bg-green-500/10 text-[#1A9951]' : 'bg-[#F0F5F0] text-[#1D271F]'} flex items-center text-[14px] md:text-[15px] px-3 py-1.5 rounded-4xl font-medium`}>
-                                            {product.change.dir === 'up' ? <IoCaretUpSharp /> : product.change.dir === 'down' ? <IoCaretDownSharp /> : <span className='font-noto text-[#1D271F] font-bold flex gap-0.5 items-center'><AiOutlineMinus  className='text-[14px] text-2xl md:text-2xl font-black' /> ০.</span>}
+                                            {product.change.dir === 'up' ? <IoCaretUpSharp /> : product.change.dir === 'down' ? <IoCaretDownSharp /> : <span className='font-noto text-[#1D271F] font-bold flex gap-0.5 items-center'><AiOutlineMinus className='text-[14px] text-2xl md:text-2xl font-black' /> ০.</span>}
                                             <span className='font-noto font-bold'>{toBengaliNumber(Math.abs(product.change.pct))}%</span>
                                         </span>
                                     </div>

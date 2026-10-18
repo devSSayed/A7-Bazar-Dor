@@ -18,6 +18,27 @@ const MoneyDecreasedCards = async () => {
 
 
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { next: { revalidate: 7200 } });
+    if (!res.ok) {
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+            <h1
+                className="text-7xl sm:text-8xl font-black tracking-tight"
+                style={{ color: '#D03739' }}
+            >
+                খালি
+            </h1>
+
+            <h2
+                className="mt-4 text-xl sm:text-2xl font-semibold"
+                style={{ color: '#1D271F' }}
+            >
+                এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি
+            </h2>
+
+            <p className="mt-2 text-sm sm:text-base text-gray-600 max-w-md">
+                এই মূহুর্তে এই ক্যাটাগরিতে কোনো পণ্য এভেলেবল নেই। অনুগ্রহ করে অন্য কোনো ক্যাটাগরি চেক করুন।
+            </p>
+        </div>
+    }
     const data = await res.json()
 
 
@@ -32,7 +53,7 @@ const MoneyDecreasedCards = async () => {
             <span className='flex items-center justify-center xl:justify-start xl:items-start'>
                 <h3 className='flex items-center gap-2 text-[#1D271F] text-[19px] md:text-2xl font-bold'><IoCaretDownSharp className='text-[#1A9951]' /> আজ দাম কমেছে</h3>
             </span>
-            
+
 
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6 px-3.5 xl:px-0 py-2 md:py-0'>
                 {

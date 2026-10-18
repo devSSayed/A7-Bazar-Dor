@@ -13,7 +13,7 @@ const NavbarDate = () => {
     
 
     return (
-        <p className='text-[#1D271F] text-[11px]  md:text-[15px] font-medium'>{date}</p>
+        <p className='text-[#1D271F] text-[11px] font-noto md:text-[15px] font-medium'>{date}</p>
     );
 };
 
