@@ -2,13 +2,14 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 const UserInfo = () => {
 
-    const { data: session } = authClient.useSession()
+    const { data: session, isPending } = authClient.useSession()
     const user = session?.user
 
     const getFirstInitial = (name?: string | null) => {
@@ -22,7 +23,20 @@ const UserInfo = () => {
 
     const handleSignOut = async () => {
         await authClient.signOut();
+
+        redirect("/");
     };
+
+    if (isPending) {
+        return (
+            <div className="flex items-center gap-2 px-3 py-2">
+                {/* Avatar Skeleton */}
+                <div className="w-8 h-8 rounded-xl bg-gray-200 animate-pulse shrink-0" />
+                {/* Name Skeleton */}
+                <div className="w-16 h-4 bg-gray-200 animate-pulse rounded" />
+            </div>
+        );
+    }
 
     return (
 
@@ -40,11 +54,11 @@ const UserInfo = () => {
                         {getFirstName(user?.name)}
                     </span>
 
-                    
-                   <RiArrowDropDownLine className="text-xl md:text-2xl text-gray-500/70"/>
+
+                    <RiArrowDropDownLine className="text-xl md:text-2xl text-gray-500/70" />
                 </div>
 
-                
+
                 <ul
                     tabIndex={-1}
                     className="menu dropdown-content bg-base-100 rounded-box z-10 mt-4 w-64 p-3 shadow-lg border border-base-200"

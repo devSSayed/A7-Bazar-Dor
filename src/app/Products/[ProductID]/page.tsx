@@ -1,6 +1,7 @@
 import Breadcrumb from "@/Components/ProductDetailsPageCompo/Breadcrumb";
 import { iProductsType } from "@/Components/Types/ProductsTypes";
 import { toBengaliNumber, toBengaliUnit } from "@/Components/utils";
+import { notFound } from "next/navigation";
 import { AiOutlineMinus } from "react-icons/ai";
 import { IoCaretDownSharp, IoCaretUpSharp } from "react-icons/io5";
 
@@ -10,7 +11,12 @@ const ProductsDetailPage = async ({ params }: { params: { ProductID: string } })
 
 
     const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${ProductID}`, { cache: 'no-store' });
+    if (!res.ok) {
+        notFound();
+    }
+
     const data = await res.json()
+
 
     const Product: iProductsType = data;
 

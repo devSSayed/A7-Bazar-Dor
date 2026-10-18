@@ -3,6 +3,7 @@ import SortingBox from '@/Components/CategoryPageCompo/SortingBox';
 import { iProductsType } from '@/Components/Types/ProductsTypes';
 import { toBengaliNumber } from '@/Components/utils';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 
 const CategoryDetailsPage = async ({ params }: { params: { CategoryID: string } }) => {
@@ -10,9 +11,12 @@ const CategoryDetailsPage = async ({ params }: { params: { CategoryID: string } 
 
 
     const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${CategoryID}`, { cache: 'no-store' });
+    if (!res.ok) {
+        notFound();
+    }
     const data = await res.json()
 
-    const Products:iProductsType[] = data;
+    const Products: iProductsType[] = data;
     const categoryInfo = data?.[0];
 
 
@@ -50,7 +54,7 @@ const CategoryDetailsPage = async ({ params }: { params: { CategoryID: string } 
                         </Link>
                     </div>
                     :
-                    
+
                     // main Icon + name part of the page
                     <div>
                         <div className='flex items-center gap-0.5 md:gap-3 bg-[#FAFCFA] border-2 border-[#E1E8E1] mx-3 xl:mx-0 px-3 md:px-6 py-9 mt-12 rounded-2xl'>
