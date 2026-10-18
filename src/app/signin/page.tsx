@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
-import { auth } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 
 
@@ -15,7 +15,7 @@ const SignInPage = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => { 
+    const handleSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault();
 
         // 1. Check if email is empty
@@ -24,18 +24,47 @@ const SignInPage = () => {
             return;
         }
 
-        // 2. Check if password is at least 8 characters long
+        // 2. Is password at least 8 characters long
         if (password.length < 8) {
             setErrorMessage("পাসওয়ার্ড অন্তত ৮ অক্ষরের হতে হবে।");
             return;
         }
 
-        // Clear errors if validation passes
+        // NO errors if validation passes
         setErrorMessage("");
 
 
+        const formData = new FormData(e.target)
+
+        Object.fromEntries(formData.entries()) as { email: string, password: string }
+
+        const { data, error } = await authClient.signIn.email({
+            email,
+            password,
+            callbackURL: "/"
+        })
+
+        if (data) {
+            toast.success("সাইন ইন সফল হয়েছে!")
+        }
+
+        if (error) {
+            toast.error("একটি সমস্যা হয়েছে, আবার চেষ্টা করুন!");
+        }
+
+    };
 
 
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
+    const handleGithubSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "github"
+        });
     };
 
     return (
@@ -109,6 +138,7 @@ const SignInPage = () => {
                 {/* Social Buttons */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
+                        onClick={handleGoogleSignIn}
                         type="button"
                         className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-[#E1E8E1] bg-white text-[#1D271F] text-xs font-bold hover:bg-gray-50 transition-colors cursor-pointer"
                     >
@@ -117,6 +147,7 @@ const SignInPage = () => {
                     </button>
 
                     <button
+                        onClick={handleGithubSignIn}
                         type="button"
                         className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-[#E1E8E1] bg-white text-[#1D271F] text-xs font-bold hover:bg-gray-50 transition-colors cursor-pointer"
                     >

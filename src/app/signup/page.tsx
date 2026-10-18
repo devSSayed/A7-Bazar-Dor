@@ -16,7 +16,7 @@ const SignUpPage = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault();
 
         // 1. Check name is empty
@@ -42,7 +42,7 @@ const SignUpPage = () => {
 
 
 
-        const formData = new FormData(e.currentTarget)
+        const formData = new FormData(e.target)
 
         Object.fromEntries(formData.entries())
 
@@ -53,17 +53,27 @@ const SignUpPage = () => {
             callbackURL: "/"
         })
 
-        if (data) {           
+        if (data) {
             toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!")
-            console.log(data);
             redirect("/");
         }
 
         if (error) {
-            console.log(error);
             toast.error("একটি সমস্যা হয়েছে, আবার চেষ্টা করুন!");
         }
 
+    };
+
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
+    const handleGithubSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "github"
+        });
     };
 
     return (
@@ -151,6 +161,7 @@ const SignUpPage = () => {
                 {/* Social Buttons */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
+                        onClick={handleGoogleSignIn}
                         type="button"
                         className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-[#E1E8E1] bg-white text-[#1D271F] text-xs font-bold hover:bg-gray-50 transition-colors cursor-pointer"
                     >
@@ -159,6 +170,7 @@ const SignUpPage = () => {
                     </button>
 
                     <button
+                        onClick={handleGithubSignIn}
                         type="button"
                         className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-[#E1E8E1] bg-white text-[#1D271F] text-xs font-bold hover:bg-gray-50 transition-colors cursor-pointer"
                     >

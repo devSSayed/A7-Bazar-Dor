@@ -10,6 +10,7 @@
 @theme {
   --font-hind: var(--font-hind-siliguri);
   --font-noto: var(--font-noto-sans-bengali);
+  --font-inter: var(--font-Inter);
 }
 
 .emoji-icon {

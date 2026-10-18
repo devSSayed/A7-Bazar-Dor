@@ -2,6 +2,7 @@ import Image from 'next/image';
 import CartImage from '@/assetes/Cart-logo.png';
 import NavbarDate from './NavbarDate';
 import Link from 'next/link';
+import UserInfo from './UserInfo';
 
 
 
@@ -19,10 +20,8 @@ const Navbar = () => {
                     </div>
 
                 </Link>
-                <div className="flex items-center gap-1 md:gap-3 shrink-0">
-                    <Link href={'/signin'}><button className='btn hover:bg-gray-200 active:bg-gray-300 rounded-[10px] md:py-6 md:text-[17px] bg-[#FAFCFA] border-none '>সাইন ইন</button></Link>
-                    <Link href={'/signup'}><button className='btn rounded-[10px] md:py-6 md:text-[17px] bg-[#05893E] active:bg-[#047F39] border border-[#047F39] text-[#F3FBF4] shadow-[0_5px_7px_-1px_rgba(0,138,61,0.9)]'>সাইন আপ</button></Link>
-                </div>
+                
+                <UserInfo />
             </div>
 
         </nav>

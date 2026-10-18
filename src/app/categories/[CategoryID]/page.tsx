@@ -3,7 +3,6 @@ import SortingBox from '@/Components/CategoryPageCompo/SortingBox';
 import { iProductsType } from '@/Components/Types/ProductsTypes';
 import { toBengaliNumber } from '@/Components/utils';
 import Link from 'next/link';
-import React from 'react';
 
 
 const CategoryDetailsPage = async ({ params }: { params: { CategoryID: string } }) => {
